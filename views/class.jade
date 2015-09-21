@@ -6,7 +6,7 @@ block content
 
   div(id="messages")
 
-  form(action="")
+  form(action="" data-room="#{className}")
     input(id="message" class="chat" data-id="#{id}" autocomplete="off")
 
   script(src="https://cdn.socket.io/socket.io-1.2.0.js")
@@ -14,10 +14,10 @@ block content
   script.
     var socket = io();
     $('form').submit(function(){
-      socket.emit('chat message', $('#message').val());
+      socket.emit('chat message', $('#message').val(), $('form').data('room'));
       $('#message').val('');
       return false;
     });
-    socket.on('chat message', function(msg){
+    socket.on($('form').data('room') + ' message', function(msg){
       $('#messages').append($('<li>').text(msg));
     });
