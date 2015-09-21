@@ -15,6 +15,6 @@ $(document).ready(function() {
   })
 
   socket.on($('form').data('room') + ' canvas', function(path){
-    
+    path.render(canvas, true);
   });
 });
