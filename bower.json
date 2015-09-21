@@ -14,6 +14,7 @@
     "tests"
   ],
   "dependencies": {
+    "fabric.js": "fabric#~1.5.0",
     "jquery": "~2.1.4"
   }
 }
