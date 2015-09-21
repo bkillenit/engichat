@@ -4,14 +4,20 @@ block content
   h1= title
     p Chat for Class #{className}
 
-  script(src="/socket.io/socket.io.js")
+  div(id="messages")
+
+  form(action="")
+    input(id="message" class="chat" data-id="#{id}" autocomplete="off")
+
+  script(src="https://cdn.socket.io/socket.io-1.2.0.js")
+  script(src="http://code.jquery.com/jquery-1.11.1.js")
   script.
     var socket = io();
-    socket.on('news', function (data) {
-      console.log(data);
-      socket.emit('my other event', { my: 'data' });
+    $('form').submit(function(){
+      socket.emit('chat message', $('#message').val());
+      $('#message').val('');
+      return false;
     });
-
-  div(class="messages")
-
-  input(class="chat" data-id="#{id}")
+    socket.on('chat message', function(msg){
+      $('#messages').append($('<li>').text(msg));
+    });
