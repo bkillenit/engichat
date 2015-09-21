@@ -16,7 +16,7 @@ a {
 #whiteboardWrapper {
   margin-left: 40px;
   position: relative;
-  top: -27px;
+  top: -33px;
 }
 
 .class {
@@ -36,11 +36,11 @@ a {
 }
 
 #whiteboardButton {
-  float: left;
   background-color: black;
   color: white;
   padding: 7px 10px;
   border-radius: 7px;
+  width: 150px;
 }
 
 #whiteboardButton:hover {
@@ -51,7 +51,6 @@ a {
   border: 1px solid black;
   width: 600px;
   height: 400px;
-  clear: both;
 }
 
 #whiteboardCanvas:hover {
