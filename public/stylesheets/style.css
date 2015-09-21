@@ -49,8 +49,9 @@ a {
 
 #whiteboardCanvas {
   border: 1px solid black;
-  width: 600px;
-  height: 400px;
+/*  width: 600px !important;
+  height: 400px !important;*/
+  position: inherit !important;
 }
 
 #whiteboardCanvas:hover {
