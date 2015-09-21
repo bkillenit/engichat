@@ -4,13 +4,25 @@ block content
   h1= title
     p Chat for Class #{className}
 
-  div(id="messages")
+  div(id="chatWrapper")
+    div(id="messages")
 
-  form(action="" data-room="#{className}")
-    input(id="message" class="chat" data-id="#{id}" autocomplete="off")
+    form(action="" data-room="#{className}")
+      input(id="message" class="chat" data-id="#{id}" autocomplete="off")
+
+  div(id="whiteboardWrapper")
+    div(id="whiteboardButton") Draw On Whiteboard
+    div(id="whiteboardCanvas")
 
   script(src="https://cdn.socket.io/socket.io-1.2.0.js")
   script(src="http://code.jquery.com/jquery-1.11.1.js")
+  script.
+    $( document ).ready(function() {
+        $('#whiteboardButton').on('click', function(){
+          alert('yay');
+        })
+    });
+
   script.
     var socket = io();
     $('form').submit(function(){

@@ -7,6 +7,18 @@ a {
   color: #00B7FF;
 }
 
+#chatWrapper,
+#whiteboardWrapper {
+  display: inline-block;
+  height: 440px;
+}
+
+#whiteboardWrapper {
+  margin-left: 40px;
+  position: relative;
+  top: -27px;
+}
+
 .class {
   display: block;
   margin: 10px;
@@ -21,4 +33,27 @@ a {
 
 .chat {
   width: 394px;
+}
+
+#whiteboardButton {
+  float: left;
+  background-color: black;
+  color: white;
+  padding: 7px 10px;
+  border-radius: 7px;
+}
+
+#whiteboardButton:hover {
+  cursor: pointer;
+}
+
+#whiteboardCanvas {
+  border: 1px solid black;
+  width: 600px;
+  height: 400px;
+  clear: both;
+}
+
+#whiteboardCanvas:hover {
+  cursor: crosshair;
 }
