@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  p Classes listed below
+
+  div
+    each cl, index in classes
+      a(href="/class/#{index}" class="class")= cl
