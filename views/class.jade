@@ -38,6 +38,15 @@ block content
       $('#message').val('');
       return false;
     });
+
+    socket.on($('form').data('room') + ' drawing', function(image){
+      var $messages = $('#messages');
+      $messages.append($('<img>').attr('src', image).addClass('upload'));
+      $messages.scrollTop($messages[0].scrollHeight);
+
+      $('#freeformModeButton').click();
+    });
+
     socket.on($('form').data('room') + ' message', function(msg){
       var $messages = $('#messages');
       $messages.append($('<li>').text(msg));

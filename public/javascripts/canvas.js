@@ -23,11 +23,7 @@ $(document).ready(function() {
       format: 'png'
     });
 
-    var $messages = $('#messages');
-    $messages.append($('<img>').attr('src', dataURL).addClass('upload'));
-    $messages.scrollTop($messages[0].scrollHeight);
-    $('#freeformModeButton').click();
-    canvas.clear();
+    socket.emit('chat image', dataURL, $('form').data('room'));
   });
 
   canvas.setDimensions({
@@ -39,6 +35,10 @@ $(document).ready(function() {
     socket.emit('chat canvas', ev.path, $('form').data('room'));
     return false;
   })
+
+  socket.on($('form').data('room') + ' image'), function(image){
+    canvas.clear();
+  }
 
   socket.on($('form').data('room') + ' canvas', function(path){
     var pathDescripts = path.path;

@@ -41,6 +41,10 @@ io.on('connection', function(socket){
   socket.on('chat canvas', function(path, className){
     io.emit(className + ' canvas', path);
   })
+
+  socket.on('chat image', function(img, className) {
+    io.emit(className + ' drawing', img);
+  })
 });
 
 http.listen(3000, function(){
