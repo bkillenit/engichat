@@ -1,11 +1,20 @@
 var express = require('express');
 var router = express.Router();
-
-var classes = {1:'algorithms', 2:'data structures', 3:'databases', 4:'operating systems'};
+var model = require('../model/model.js');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('classes', {'classes': classes});
+  model.getClasses().then(function(results){
+    res.render('classes', {'classes': results});
+  });
 });
+
+router.post('/', function(req, res, next){
+  var newClass = req.body.class;
+
+  model.createMessage(newClass).then(function(data){
+    res.status(201).send(data.dataValues);
+  })
+})
 
 module.exports = router;

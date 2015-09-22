@@ -10,6 +10,8 @@ var users = require('./routes/users');
 var classes = require('./routes/classes');
 var oneClass = require('./routes/class');
 
+var db = require('./model/db.js');
+
 var io = require('socket.io')(http);
 
 // view engine setup
@@ -21,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
+// app.use('/model', express.static(__dirname + '/bower_components'));
 
 app.use('/', routes);
 app.use('/users', users);

@@ -4,6 +4,10 @@ var router = express.Router();
 var classes = {1:'Algorithms', 2:'Data Structures', 3:'Databases', 4:'Operating Systems'};
 
 /* GET users listing. */
+router.get('/messages/:id', function(req, res, next){
+
+})
+
 router.get('/:id', function(req, res, next) {
   var id = req.params.id;
   if(classes[id] === undefined) { res.send(404); }

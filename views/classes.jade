@@ -4,6 +4,36 @@ block content
   h1= title
   p Classes listed below
 
-  div
-    each cl, index in classes
-      a(href="/class/#{index}" class="class")= cl
+  form(id="classForm" action="")
+    input(autocomplete="off" placeholder="Enter new class")
+    button Create
+
+  div(id="classList")
+    each cl in classes
+      a(href="/class/#{cl.id}" class="class")= cl.name
+
+  script(src="/bower_components/jquery/dist/jquery.min.js")
+  script.
+    $( document ).ready(function() {
+      $('#classForm').submit(function(event){
+        event.preventDefault();
+
+        var className = $(this).find('input').val();
+        $('#classList').append();
+        $(this).find('input').val("");
+
+        var url = '/classes';
+        $.ajax({
+          type: "POST",
+          url: url,
+          data: {'class': className},
+          success: function(data){
+            var $node = $('<a>').attr('href', "/class/" + data.id).text(data.name).addClass('class');
+            $('#classList').append($node);
+          },
+          error: function() {
+            alert('The class failed to create! This is mostly due to users trying to create a class that already exists.')
+          }
+        });
+      })
+    });

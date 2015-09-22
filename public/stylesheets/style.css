@@ -47,7 +47,7 @@ a {
   overflow-y: scroll;
 }
 
-form {
+#chatForm {
   background: #000;
   padding: 3px;
   position: fixed;
@@ -55,14 +55,14 @@ form {
   100%;
 }
 
-form input {
+#chatForm input {
   border: 0;
   padding: 10px;
   width: 90%;
   margin-right: .7%;
 }
 
-form button {
+#chatForm button {
   width: 9%;
   background: rgb(130, 224, 255);
   border: none;

@@ -21,19 +21,13 @@ block content
           and a(href="http://www.apple.com/safari")= Safari
       div(id="clearSketch" class="button") Clear
 
-  form(action="" data-room="#{className}")
+  form(id="chatForm" action="" data-room="#{className}")
     input(id="message" class="chat" data-id="#{id}" autocomplete="off" placeholder="Type your message here")
     button Send
 
   script(src="https://cdn.socket.io/socket.io-1.2.0.js")
   script(src="/bower_components/jquery/dist/jquery.min.js")
   script(src="/bower_components/fabric/dist/fabric.min.js")
-  script.
-    $( document ).ready(function() {
-        $('#whiteboardButton').on('click', function(){
-          alert('yay');
-        })
-    });
 
   script.
     var socket = io();
