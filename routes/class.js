@@ -20,7 +20,12 @@ router.get('/:id', function(req, res, next) {
 
 router.get('/canvas/:name', function(req, res, next){
   var name = req.params.name;
-  res.send(JSON.stringify(whiteboardStates[name]));
+  var board = whiteboardStates[name];
+  if(board === undefined) {
+    res.send(200);
+  } else {
+    res.send(whiteboardStates[name]);
+  }
 })
 
 module.exports = router;

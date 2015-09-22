@@ -1,11 +1,10 @@
 var initializeCanvas = function(className){
-  // Attach the mousemove event handler
   var canvas = new fabric.Canvas('whiteboardCanvas');
 
   $.get("../class/canvas/" + className, function( data ) {
-    if(data !== undefined) {
-      console.log(data);
-      canvas.loadFromJSON(data);
+    if(data !== 'OK') {
+      console.log("'" + JSON.stringify(data) + "'");
+      canvas.loadFromJSON(JSON.stringify(data), canvas.renderAll.bind(canvas));
     }
   });
 
