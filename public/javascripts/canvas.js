@@ -40,7 +40,16 @@ $(document).ready(function() {
     return false;
   })
 
-  socket.on($('form').data('room') + ' drawing', function(image){
+  canvas.on('object:modified', function(ev){
+
+  });
+
+  $('#colorSelect').on('change', function(){
+    console.log(canvas);
+    canvas.freeDrawingBrush.color = $(this).val();
+  });
+
+  socket.on($('form').data('room') + ' image', function(image){
     canvas.clear();
   });
 

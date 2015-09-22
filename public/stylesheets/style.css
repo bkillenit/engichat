@@ -99,6 +99,14 @@ a {
   border: 1px solid black;
 }
 
+#colorSelect {
+  width: 125px;
+  height: 30px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
 #whiteboardCanvas {
   border: 1px solid black;
 /*  width: 600px !important;

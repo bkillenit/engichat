@@ -14,6 +14,12 @@ block content
       div(id="freeformModeButton" class="button") Freeform Mode
       div(id="selectModeButton" class="button") Select Mode
       div(id="uploadSketch" class="button") Upload Sketch
+      select(id="colorSelect")
+        option(value="black") black
+        option(value="blue") blue
+        option(value="red") red
+        option(value="green") green
+
       h2 Whiteboard
       canvas(id="whiteboardCanvas")
         p Unfortunately, your browser is currently unsupported by our web application. We are sorry for the inconvenience. Please use one of the supported browsers listed below, or draw the image you want using an offline tool.</p>
@@ -44,7 +50,7 @@ block content
       return false;
     });
 
-    socket.on($('form').data('room') + ' drawing', function(image){
+    socket.on($('form').data('room') + ' image', function(image){
       var $messages = $('#messages');
       $messages.append($('<img>').attr('src', image).addClass('upload'));
       $messages.scrollTop($messages[0].scrollHeight);

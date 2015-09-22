@@ -48,7 +48,7 @@ io.on('connection', function(socket){
   })
 
   socket.on('chat image', function(img, className) {
-    io.emit(className + ' drawing', img);
+    io.emit(className + ' image', img);
   })
 });
 
