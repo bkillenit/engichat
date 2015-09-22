@@ -36,9 +36,9 @@ $(document).ready(function() {
     return false;
   })
 
-  socket.on($('form').data('room') + ' image'), function(image){
+  socket.on($('form').data('room') + ' drawing', function(image){
     canvas.clear();
-  }
+  });
 
   socket.on($('form').data('room') + ' canvas', function(path){
     var pathDescripts = path.path;
