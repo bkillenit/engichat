@@ -7,6 +7,8 @@ block content
   div(id="contentWrapper")
     div(id="chatWrapper")
       div(id="messages")
+        each msg in messages
+          li= msg.message
 
     div(id="whiteboardWrapper")
       div(id="freeformModeButton" class="button") Freeform Mode
@@ -30,6 +32,11 @@ block content
   script(src="/bower_components/fabric/dist/fabric.min.js")
 
   script.
+    $( document ).ready(function() {
+      var $messages = $('#messages');
+      $messages.scrollTop($messages[0].scrollHeight);
+    });
+
     var socket = io();
     $('form').submit(function(){
       socket.emit('chat message', $('#message').val(), $('form').data('room'));

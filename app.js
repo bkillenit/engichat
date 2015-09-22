@@ -38,7 +38,7 @@ app.use(function(req, res, next) {
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg, className){
-    model.createMessage(msg, className).then(function(){
+    model.createMessage(msg, className).then(function() {
       io.emit(className + ' message', msg);
     });
   });

@@ -11,18 +11,23 @@ var getClasses = function() {
 var getMessages = function(id) {
   return db.Messages.findAll({
     where: {
-      id: id
+      classID: id
     }
   });
 }
 
 var createMessage = function(msg, className) {
-  return db.Classes.findOne({name: className}).then(function(results){
-    return db.Messages.insert({message: msg, classID: results.id});
+  return db.Classes.findOne({name: className}).then(function(result){
+    return db.Messages.create({message: msg, classID: result.id});
   })
+}
+
+var getClass = function(id) {
+  return db.Classes.findOne({id: id});
 }
 
 module.exports.createClass = createClass;
 module.exports.getClasses = getClasses;
 module.exports.getMessages = getMessages;
 module.exports.createMessage = createMessage;
+module.exports.getClass = getClass;

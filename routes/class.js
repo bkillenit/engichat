@@ -10,9 +10,11 @@ router.get('/:id', function(req, res, next) {
   var id = req.params.id;
 
   model.getMessages(id).then(function(data){
-    res.render('class', {'className': classes[id],
-                         'classID': id,
-                         'messages': data});
+    model.getClass().then(function(result){
+      res.render('class', {'className': result.name,
+                           'classID': id,
+                           'messages': data});
+    })
   })
 });
 

@@ -14,7 +14,7 @@ var sequelize = new Sequelize('database', 'username', 'password', {
 });
 
 var Messages = sequelize.define('Messages', {
-  message: Sequelize.STRING,
+  message: {type: Sequelize.STRING, allowNull: false},
   classID: Sequelize.INTEGER
 });
 
