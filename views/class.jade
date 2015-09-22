@@ -11,7 +11,9 @@ block content
       input(id="message" class="chat" data-id="#{id}" autocomplete="off")
 
   div(id="whiteboardWrapper")
-    div(id="whiteboardButton") Draw On Whiteboard
+    div(id="whiteboardButton" class="button") Draw On Whiteboard
+    div(id="freeformModeButton" class="button") Freeform Mode
+    div(id="selectModeButton" class="button") Select Mode
     canvas(id="whiteboardCanvas")
       p Unfortunately, your browser is currently unsupported by our web application. We are sorry for the inconvenience. Please use one of the supported browsers listed below, or draw the image you want using an offline tool.</p>
       p Supported browsers:

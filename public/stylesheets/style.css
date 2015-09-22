@@ -35,16 +35,24 @@ a {
   width: 394px;
 }
 
-#whiteboardButton {
+.button {
   background-color: black;
   color: white;
   padding: 7px 10px;
   border-radius: 7px;
   width: 150px;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
 }
 
-#whiteboardButton:hover {
+.button:hover {
   cursor: pointer;
+}
+
+.selected {
+  background-color: green;
+  color: black;
 }
 
 #whiteboardCanvas {
