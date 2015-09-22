@@ -18,12 +18,13 @@ var getMessages = function(id) {
 
 var createMessage = function(msg, className) {
   return db.Classes.findOne({name: className}).then(function(result){
+    console.log(msg + " " + className + " " + result.id);
     return db.Messages.create({message: msg, classID: result.id});
   })
 }
 
 var getClass = function(id) {
-  return db.Classes.findOne({id: id});
+  return db.Classes.findById(id);
 }
 
 module.exports.createClass = createClass;
