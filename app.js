@@ -36,7 +36,12 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+var clients = {};
+
 io.on('connection', function(socket){
+  clients[socket.id] = socket.id;
+  console.log(clients);
+
   socket.on('chat message', function(msg, className){
     model.createMessage(msg, className).then(function() {
       io.emit(className + ' message', msg);
@@ -45,12 +50,28 @@ io.on('connection', function(socket){
 
   socket.on('chat canvas', function(path, className, canvas){
     oneClass.whiteboardStates[className] = canvas;
-    io.emit(className + ' canvas', path);
+    // socket.to(className + ' canvas').emit(className + ' canvas', path);
+    //io.emit(className + ' canvas', path);
+    // socket.broadcast.to(className + ' canvas').emit(path);
+    // for(socketID in clients) {
+    //   var sock = clients[socketID];
+    //   if(socket.id != sock) {
+    //     console.log(sock);
+    //     socket.broadcast.emit('', path);
+    //   }
+    // }
+    socket.broadcast.emit(className + ' canvas', path);
   })
 
   socket.on('chat image', function(img, className) {
     io.emit(className + ' image', img);
   })
+
+  socket.on('disconnect', function() {
+    console.log('Got disconnect!');
+
+    delete clients[socket.id];
+  });
 });
 
 http.listen(3000, function(){
