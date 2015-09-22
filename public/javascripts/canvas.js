@@ -36,6 +36,7 @@ $(document).ready(function() {
   })
 
   canvas.on('path:created', function(ev){
+    console.log(ev);
     socket.emit('chat canvas', ev.path, $('form').data('room'));
     return false;
   })
@@ -43,6 +44,8 @@ $(document).ready(function() {
   canvas.on('object:modified', function(ev){
 
   });
+
+  $('#colorSelect').val('black');
 
   $('#colorSelect').on('change', function(){
     console.log(canvas);
@@ -69,7 +72,7 @@ $(document).ready(function() {
 
     var newPath = new fabric.Path(buffer);
     newPath.fill = null;
-    newPath.stroke = "rgb(0, 0, 0)";
+    newPath.stroke = path.stroke;
     newPath.strokeWidth = 1
     newPath.strokeLineCap = "round";
     newPath.strokeLineJoin = "round";
