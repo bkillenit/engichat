@@ -39,7 +39,7 @@ io.on('connection', function(socket){
   });
 
   socket.on('chat canvas', function(path, className){
-    socket.broadcast.to(className + ' canvas').emit(path);
+    io.emit(className + ' canvas', path);
   })
 });
 

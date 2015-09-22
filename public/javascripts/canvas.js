@@ -41,6 +41,26 @@ $(document).ready(function() {
   })
 
   socket.on($('form').data('room') + ' canvas', function(path){
-    path.render(canvas, true);
+    var pathDescripts = path.path;
+
+    var buffer = [];
+    for(var i = 0; i < pathDescripts.length; i++) {
+      var subPath = pathDescripts[i];
+
+      for(var j = 0; j < subPath.length; j++) {
+        buffer.push(subPath[j]);
+      }
+    }
+
+    buffer = buffer.join(' ');
+
+    var newPath = new fabric.Path(buffer);
+    newPath.fill = null;
+    newPath.stroke = "rgb(0, 0, 0)";
+    newPath.strokeWidth = 1
+    newPath.strokeLineCap = "round";
+    newPath.strokeLineJoin = "round";
+
+    canvas.add(newPath);
   });
 });
