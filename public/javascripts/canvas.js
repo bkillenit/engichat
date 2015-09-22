@@ -18,6 +18,15 @@ $(document).ready(function() {
     canvas.isDrawingMode = false;
   })
 
+  $('#uploadSketch').on('click', function(event) {
+    var dataURL = canvas.toDataURL({
+      format: 'png'
+    });
+
+    $('#messages').append($('<img>').attr('src', dataURL).addClass('upload'));
+    canvas.clear();
+  });
+
   canvas.setDimensions({
     width: 600,
     height: 400
