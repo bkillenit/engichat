@@ -31,8 +31,8 @@ $(document).ready(function() {
   })
 
   canvas.setDimensions({
-    width: 600,
-    height: 400
+    width: 850,
+    height: 500
   })
 
   canvas.on('path:created', function(ev){

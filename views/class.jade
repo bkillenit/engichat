@@ -4,23 +4,25 @@ block content
   h1= title
     p Chat for Class #{className}
 
-  div(id="chatWrapper")
-    div(id="messages")
+  div(id="contentWrapper")
+    div(id="chatWrapper")
+      div(id="messages")
 
-    form(action="" data-room="#{className}")
-      input(id="message" class="chat" data-id="#{id}" autocomplete="off")
+    div(id="whiteboardWrapper")
+      div(id="freeformModeButton" class="button") Freeform Mode
+      div(id="selectModeButton" class="button") Select Mode
+      div(id="uploadSketch" class="button") Upload Sketch
+      canvas(id="whiteboardCanvas")
+        p Unfortunately, your browser is currently unsupported by our web application. We are sorry for the inconvenience. Please use one of the supported browsers listed below, or draw the image you want using an offline tool.</p>
+        p Supported browsers:
+          a(href="http://www.opera.com")= Opera
+          a(href="http://www.mozilla.com")= Firefox
+          and a(href="http://www.apple.com/safari")= Safari
+      div(id="clearSketch" class="button") Clear
 
-  div(id="whiteboardWrapper")
-    div(id="freeformModeButton" class="button") Freeform Mode
-    div(id="selectModeButton" class="button") Select Mode
-    div(id="uploadSketch" class="button") Upload Sketch
-    canvas(id="whiteboardCanvas")
-      p Unfortunately, your browser is currently unsupported by our web application. We are sorry for the inconvenience. Please use one of the supported browsers listed below, or draw the image you want using an offline tool.</p>
-      p Supported browsers:
-        a(href="http://www.opera.com")= Opera
-        a(href="http://www.mozilla.com")= Firefox
-        and a(href="http://www.apple.com/safari")= Safari
-    div(id="clearSketch" class="button") Clear
+  form(action="" data-room="#{className}")
+    input(id="message" class="chat" data-id="#{id}" autocomplete="off" placeholder="Type your message here")
+    button Send
 
   script(src="https://cdn.socket.io/socket.io-1.2.0.js")
   script(src="../bower_components/jquery/dist/jquery.min.js")

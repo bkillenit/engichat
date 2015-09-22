@@ -1,5 +1,9 @@
+* {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,10 +11,22 @@ a {
   color: #00B7FF;
 }
 
+.class {
+  display: block;
+  margin: 10px;
+}
+
+#contentWrapper {
+  height: 600px;
+  margin-top: 50px;
+  margin-left: 23px;
+  width: 100%;
+}
+
 #chatWrapper,
 #whiteboardWrapper {
   display: inline-block;
-  height: 440px;
+  height: 95%;
   margin-top: -20px;
 }
 
@@ -20,22 +36,38 @@ a {
   top: -10px;
 }
 
-.class {
-  display: block;
-  margin: 10px;
-}
-
 #messages {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 100%;
   border: 1px solid black;
-  margin-bottom: 20px;
   overflow-y: scroll;
 }
 
-.chat {
-  width: 394px;
+form {
+  background: #000;
+  padding: 3px;
+  position: fixed;
+  bottom: 0; width:
+  100%;
 }
+
+form input {
+  border: 0;
+  padding: 10px;
+  width: 90%;
+  margin-right: .7%;
+}
+
+form button {
+  width: 9%;
+  background: rgb(130, 224, 255);
+  border: none;
+  padding: 8px;
+  border-radius: 3px;
+}
+
+/*form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+*/
 
 .button {
   background-color: black;
@@ -71,6 +103,6 @@ a {
 }
 
 #clearSketch {
-  margin-top: 4px;
+  margin-top: 2px;
   background-color: red;
 }
