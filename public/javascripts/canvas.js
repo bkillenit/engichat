@@ -1,6 +1,14 @@
-$(document).ready(function() {
+var initializeCanvas = function(className){
   // Attach the mousemove event handler
   var canvas = new fabric.Canvas('whiteboardCanvas');
+
+  $.get("../class/canvas/" + className, function( data ) {
+    if(data !== undefined) {
+      console.log(data);
+      canvas.loadFromJSON(data);
+    }
+  });
+
   canvas.isDrawingMode = true;
   var socket = io();
 
@@ -36,8 +44,7 @@ $(document).ready(function() {
   })
 
   canvas.on('path:created', function(ev){
-    console.log(ev);
-    socket.emit('chat canvas', ev.path, $('form').data('room'));
+    socket.emit('chat canvas', ev.path, $('form').data('room'), canvas.toJSON());
     return false;
   })
 
@@ -79,4 +86,4 @@ $(document).ready(function() {
 
     canvas.add(newPath);
   });
-});
+}

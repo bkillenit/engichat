@@ -41,6 +41,8 @@ block content
     $( document ).ready(function() {
       var $messages = $('#messages');
       $messages.scrollTop($messages[0].scrollHeight);
+
+      initializeCanvas($('form').data('room'));
     });
 
     var socket = io();

@@ -27,7 +27,7 @@ app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/classes', classes);
+app.use('/classes/', classes);
 app.use('/class/', oneClass);
 
 app.use(function(req, res, next) {
@@ -43,7 +43,9 @@ io.on('connection', function(socket){
     });
   });
 
-  socket.on('chat canvas', function(path, className){
+  socket.on('chat canvas', function(path, className, canvas){
+    console.log(canvas);
+    oneClass.whiteboardStates[className] = canvas;
     io.emit(className + ' canvas', path);
   })
 
