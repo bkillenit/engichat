@@ -23,7 +23,10 @@ $(document).ready(function() {
       format: 'png'
     });
 
-    $('#messages').append($('<img>').attr('src', dataURL).addClass('upload'));
+    var $messages = $('#messages');
+    $messages.append($('<img>').attr('src', dataURL).addClass('upload'));
+    $messages.scrollTop($messages[0].scrollHeight);
+    $('#freeformModeButton').click();
     canvas.clear();
   });
 

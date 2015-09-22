@@ -39,7 +39,9 @@ block content
       return false;
     });
     socket.on($('form').data('room') + ' message', function(msg){
-      $('#messages').append($('<li>').text(msg));
+      var $messages = $('#messages');
+      $messages.append($('<li>').text(msg));
+      $messages.scrollTop($messages[0].scrollHeight);
     });
 
   script(src="../javascripts/canvas.js")
