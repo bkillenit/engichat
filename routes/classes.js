@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next){
   var newClass = req.body.class;
 
-  model.createMessage(newClass).then(function(data){
+  model.createClass(newClass).then(function(data){
     res.status(201).send(data.dataValues);
   })
 })

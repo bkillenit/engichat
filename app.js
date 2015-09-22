@@ -10,7 +10,7 @@ var users = require('./routes/users');
 var classes = require('./routes/classes');
 var oneClass = require('./routes/class');
 
-var db = require('./model/db.js');
+var model = require('./model/model.js');
 
 var io = require('socket.io')(http);
 
@@ -38,7 +38,9 @@ app.use(function(req, res, next) {
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg, className){
-    io.emit(className + ' message', msg);
+    model.createMessage(msg, className).then(function(){
+      io.emit(className + ' message', msg);
+    });
   });
 
   socket.on('chat canvas', function(path, className){
