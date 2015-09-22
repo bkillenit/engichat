@@ -36,6 +36,10 @@ a {
   top: -10px;
 }
 
+#whiteboardWrapper > h2 {
+  float: right;
+}
+
 #messages {
   width: 500px;
   height: 100%;

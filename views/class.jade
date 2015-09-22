@@ -12,6 +12,7 @@ block content
       div(id="freeformModeButton" class="button") Freeform Mode
       div(id="selectModeButton" class="button") Select Mode
       div(id="uploadSketch" class="button") Upload Sketch
+      h2 Whiteboard
       canvas(id="whiteboardCanvas")
         p Unfortunately, your browser is currently unsupported by our web application. We are sorry for the inconvenience. Please use one of the supported browsers listed below, or draw the image you want using an offline tool.</p>
         p Supported browsers:
@@ -25,8 +26,8 @@ block content
     button Send
 
   script(src="https://cdn.socket.io/socket.io-1.2.0.js")
-  script(src="../bower_components/jquery/dist/jquery.min.js")
-  script(src="../bower_components/fabric/dist/fabric.min.js")
+  script(src="/bower_components/jquery/dist/jquery.min.js")
+  script(src="/bower_components/fabric/dist/fabric.min.js")
   script.
     $( document ).ready(function() {
         $('#whiteboardButton').on('click', function(){
@@ -56,4 +57,4 @@ block content
       $messages.scrollTop($messages[0].scrollHeight);
     });
 
-  script(src="../javascripts/canvas.js")
+  script(src="/javascripts/canvas.js")
