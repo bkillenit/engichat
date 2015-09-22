@@ -11,12 +11,13 @@ a {
 #whiteboardWrapper {
   display: inline-block;
   height: 440px;
+  margin-top: -20px;
 }
 
 #whiteboardWrapper {
   margin-left: 40px;
   position: relative;
-  top: -33px;
+  top: -10px;
 }
 
 .class {
@@ -67,4 +68,9 @@ a {
 /*  width: 600px !important;
   height: 400px !important;*/
   position: inherit !important;
+}
+
+#clearSketch {
+  margin-top: 4px;
+  background-color: red;
 }

@@ -26,6 +26,10 @@ $(document).ready(function() {
     socket.emit('chat image', dataURL, $('form').data('room'));
   });
 
+  $('#clearSketch').on('click', function(){
+    canvas.clear();
+  })
+
   canvas.setDimensions({
     width: 600,
     height: 400
