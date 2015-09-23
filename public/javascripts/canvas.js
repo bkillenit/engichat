@@ -145,7 +145,16 @@ var initializeCanvas = function(className){
     buffer = buffer.join(' ');
 
     var newPath = new fabric.Path(buffer);
-    newPath.fill = null;
+    if(path.fill !== undefined) {
+      newPath.fill = path.fill;
+    } else {
+      newPath.fill = null;
+    }
+
+    if(path.borderColor !== undefined) {
+      newPath.borderColor = path.borderColor;
+    }
+
     newPath.stroke = path.stroke;
     newPath.strokeWidth = 1
     newPath.strokeLineCap = "round";

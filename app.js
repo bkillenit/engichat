@@ -46,6 +46,7 @@ io.on('connection', function(socket){
   });
 
   socket.on('chat canvas', function(path, className, canvas){
+    console.log(canvas);
     oneClass.whiteboardStates[className] = canvas;
     socket.broadcast.emit(className + ' canvas', path);
   })
