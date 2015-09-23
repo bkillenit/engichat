@@ -9,6 +9,7 @@ var initializeCanvas = function(className){
   });
 
   canvas.isDrawingMode = true;
+  canvas.backgroundColor = "white";
   var socket = io();
 
   $('#freeformModeButton').addClass('selected');
