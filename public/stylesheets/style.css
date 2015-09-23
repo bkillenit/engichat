@@ -122,11 +122,12 @@ a {
   border: 1px solid black;
 }
 
-#colorSelect {
-  width: 125px;
+#colorSelect,
+#structureSelect {
+  width: 120px;
   height: 30px;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: bold;
 }
 

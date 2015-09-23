@@ -7,6 +7,8 @@ var initializeCanvas = function(className){
     }
   });
 
+  var dataStructureSelected = false;
+
   canvas.isDrawingMode = true;
   canvas.backgroundColor = "white";
   var socket = io();
@@ -52,11 +54,67 @@ var initializeCanvas = function(className){
   });
 
   $('#colorSelect').val('black');
+  $('#structureSelect').val('');
 
   $('#colorSelect').on('change', function(){
     console.log(canvas);
     canvas.freeDrawingBrush.color = $(this).val();
   });
+
+  $('#structureSelect').on('change', function(){
+    dataStructureSelected = true;
+  });
+
+  canvas.on('mouse:down', function(ev){
+    if(dataStructureSelected) {
+      console.log(ev.e);
+      var y = ev.e.layerY;
+      var x = ev.e.layerX;
+
+      var ds = $('#structureSelect').val();
+
+      if(ds === 'bst') {
+        var circle = new fabric.Circle({
+          radius: 30,
+          stroke: 2,
+          borderColor: 'black',
+          fill: '',
+          left: x,
+          top: y
+        })
+
+        canvas.add(circle);
+      } else if(ds === 'll') {
+        var rect = new fabric.Rect({
+          borderColor: 'black',
+          fill: 'white',
+          stroke: 1,
+          left: x,
+          top: y,
+          width: 50,
+          height: 50
+        });
+
+        var rect1 = new fabric.Rect({
+          borderColor: 'black',
+          fill: 'white',
+          stroke: 1,
+          left: x + 50,
+          top: y,
+          width: 50,
+          height: 50
+        });
+
+        canvas.add(rect);
+        canvas.add(rect1);
+      } else if(ds === 'array') {
+
+      }
+
+      var ds = $('#structureSelect').val('');
+      dataStructureSelected = false;
+    }
+  })
 
   socket.on($('form').data('room') + ' image', function(image){
     canvas.clear();
