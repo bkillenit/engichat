@@ -3,8 +3,7 @@ var initializeCanvas = function(className){
 
   $.get("../class/canvas/" + className, function( data ) {
     if(data !== 'OK') {
-      console.log("'" + JSON.stringify(data) + "'");
-      canvas.loadFromJSON(JSON.stringify(data), canvas.renderAll.bind(canvas));
+      canvas.loadFromJSON(data, canvas.renderAll.bind(canvas));
     }
   });
 
@@ -44,7 +43,7 @@ var initializeCanvas = function(className){
   })
 
   canvas.on('path:created', function(ev){
-    socket.emit('chat canvas', ev.path, $('form').data('room'), canvas.toJSON());
+    socket.emit('chat canvas', ev.path, $('form').data('room'), JSON.stringify(canvas.toDatalessJSON()));
     return false;
   })
 
