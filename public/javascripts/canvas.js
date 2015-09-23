@@ -79,8 +79,8 @@ var initializeCanvas = function(className){
           stroke: 2,
           borderColor: 'black',
           fill: '',
-          left: x,
-          top: y
+          left: x - 30,
+          top: y - 30
         })
 
         canvas.add(circle);
@@ -108,7 +108,17 @@ var initializeCanvas = function(className){
         canvas.add(rect);
         canvas.add(rect1);
       } else if(ds === 'array') {
+        var rect = new fabric.Rect({
+          borderColor: 'black',
+          fill: 'white',
+          stroke: 1,
+          left: x,
+          top: y,
+          width: 50,
+          height: 50
+        });
 
+        canvas.add(rect);
       }
 
       var ds = $('#structureSelect').val('');
