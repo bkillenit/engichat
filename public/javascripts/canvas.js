@@ -57,7 +57,6 @@ var initializeCanvas = function(className){
   $('#structureSelect').val('');
 
   $('#colorSelect').on('change', function(){
-    console.log(canvas);
     canvas.freeDrawingBrush.color = $(this).val();
   });
 
